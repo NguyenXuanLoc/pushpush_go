@@ -1,0 +1,18 @@
+name: pushpushgo
+description: This plugin allows you to receive push notifications. Powered by Pushwoosh (www.pushwoosh.com).
+version: 2.2.2
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+# The following section is specific to Flutter.
+flutter:
+  plugin:
+    androidPackage: com.pushpushgo
+    pluginClass: PushPushGoPlugin
+    
