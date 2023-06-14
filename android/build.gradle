@@ -1,0 +1,58 @@
+group 'com.pushwoosh.pushwoosh'
+version '1.0-SNAPSHOT'
+apply plugin: 'com.android.library'
+
+buildscript {
+    ext.kotlin_version = '1.8.0'
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.10'  // Google Services plugin
+
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 21
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.0.1'
+    // local repo
+    // jitpack
+    implementation "com.github.ppgco.android-sdk:sdk:2.0.0"
+
+    // GMS
+    implementation platform('com.google.firebase:firebase-bom:31.0.1')
+    implementation 'com.google.firebase:firebase-messaging'
+
+/*    // HMS
+    implementation 'com.huawei.agconnect:agconnect-core:1.7.0.300'
+    implementation 'com.huawei.hms:push:6.5.0.300'*/
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.google.guava:guava:31.1-android"\
+
+}
