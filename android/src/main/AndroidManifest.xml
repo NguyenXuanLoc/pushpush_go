@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pushwoosh.pushwoosh">
+
+    <application >
+<!--        <meta-data
+            android:name="com.pushwoosh.notification_service_extension"
+            android:value="com.pushwoosh.plugin.PushwooshNotificationServiceExtension" />
+        <meta-data
+            android:name="com.pushpushgo.apikey"
+            android:value="{apiKey}" />
+        <meta-data
+            android:name="com.pushpushgo.projectId"
+            android:value="{projectId}" />-->
+    </application>
+</manifest>
