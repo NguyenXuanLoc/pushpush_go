@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pushwoosh/pushwoosh.dart';
 
 void main() => runApp(new MyApp());
 
@@ -18,7 +17,7 @@ class _MyAppState extends State<MyApp> {
 
   set showAlert(bool value) {
     _showAlert = value;
-    Pushwoosh.getInstance.setShowForegroundAlert(value);
+    // Pushwoosh.getInstance.setShowForegroundAlert(value);
   }
 
   @override
@@ -29,58 +28,58 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    Pushwoosh.initialize({"app_id": "11C10-EF18D", "sender_id": "562785984945"});
+    // Pushwoosh.initialize({"app_id": "11C10-EF18D", "sender_id": "562785984945"});
 
     setState(() {
       _message = "Ready";
       addLog();
     });
 
-    Pushwoosh pushwoosh = Pushwoosh.getInstance;
-    pushwoosh.enableHuaweiNotifications();
+    // Pushwoosh pushwoosh = Pushwoosh.getInstance;
+    // pushwoosh.enableHuaweiNotifications();
 
-    pushwoosh.onPushReceived.listen((PushEvent event) {
-      var message = event.pushwooshMessage;
-      print("onPushReceived" + message.payload.toString());
+    // pushwoosh.onPushReceived.listen((PushEvent event) {
+    //   var message = event.pushwooshMessage;
+    //   print("onPushReceived" + message.payload.toString());
+    //
+    //   setState(() {
+    //     _message = "Push Received:\n" + message.payload.toString();
+    //     addLog();
+    //   });
+    // });
 
-      setState(() {
-        _message = "Push Received:\n" + message.payload.toString();
-        addLog();
-      });
-    });
+    // pushwoosh.onPushAccepted.listen((event) {
+    //   var message = event.pushwooshMessage;
+    //   print("onPushAccepted" + message.payload.toString());
+    //
+    //   setState(() {
+    //     _message = "Push Accepted:\n" + message.payload.toString();
+    //     addLog();
+    //   });
+    // });
 
-    pushwoosh.onPushAccepted.listen((event) {
-      var message = event.pushwooshMessage;
-      print("onPushAccepted" + message.payload.toString());
+    // pushwoosh.onDeepLinkOpened.listen((String link) {
+    //   var message = "Link opened:\n" + link;
+    //   print(message);
+    //
+    //   setState(() {
+    //     _message = "Link opened:\n" + link;
+    //     addLog();
+    //   });
+    // });
 
-      setState(() {
-        _message = "Push Accepted:\n" + message.payload.toString();
-        addLog();
-      });
-    });
-
-    pushwoosh.onDeepLinkOpened.listen((String link) {
-      var message = "Link opened:\n" + link;
-      print(message);
-
-      setState(() {
-        _message = "Link opened:\n" + link;
-        addLog();
-      });
-    });
-
-    _showAlert = await pushwoosh.showForegroundAlert;
+    // _showAlert = await pushwoosh.showForegroundAlert;
   }
 
   void _registerForPushNotifications() async {
-    Pushwoosh pushwoosh = Pushwoosh.getInstance;
+    // Pushwoosh pushwoosh = Pushwoosh.getInstance;
 
     String token = "empty";
-    try {
-      token = await pushwoosh.registerForPushNotifications() ?? token;
-    } catch (e) {
-      token = e.toString();
-    }
+    // try {
+    //   token = await pushwoosh.registerForPushNotifications() ?? token;
+    // } catch (e) {
+    //   token = e.toString();
+    // }
 
     setState(() {
       _message = "Registered for pushes with token: " + token;
@@ -89,15 +88,15 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _unregisterForPushNotifications() async {
-    Pushwoosh pushwoosh = Pushwoosh.getInstance;
+    // Pushwoosh pushwoosh = Pushwoosh.getInstance;
 
     String result = "Unregistered from push notifications";
 
-    try {
-      await pushwoosh.unregisterForPushNotifications();
-    } catch (e) {
-      result = e.toString();
-    }
+    // try {
+    //   await pushwoosh.unregisterForPushNotifications();
+    // } catch (e) {
+    //   result = e.toString();
+    // }
 
     setState(() {
       _message = result;
@@ -106,17 +105,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _getTags() async {
-    Pushwoosh pushwoosh = Pushwoosh.getInstance;
+    // Pushwoosh pushwoosh = Pushwoosh.getInstance;
 
     Map<dynamic, dynamic> tags = {};
-    try {
-      tags = await pushwoosh.getTags();
-    } catch (e) {
-      setState(() {
-        _message = "Get tags failed:\n" + e.toString();
-        addLog();
-      });
-    }
+    // try {
+    //   tags = await pushwoosh.getTags();
+    // } catch (e) {
+    //   setState(() {
+    //     _message = "Get tags failed:\n" + e.toString();
+    //     addLog();
+    //   });
+    // }
 
     setState(() {
       _message = "Tags:\n" + tags.toString();
@@ -125,17 +124,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _setTags() async {
-    Pushwoosh pushwoosh = Pushwoosh.getInstance;
+    // Pushwoosh pushwoosh = Pushwoosh.getInstance;
 
     Map<String, dynamic> tags = {"tag1": "value"};
 
     String result = "setTags completed: " + tags.toString();
 
-    try {
-      await pushwoosh.setTags(tags);
-    } catch (e) {
-      result = "Set tags failed:\n" + e.toString();
-    }
+    // try {
+    //   await pushwoosh.setTags(tags);
+    // } catch (e) {
+    //   result = "Set tags failed:\n" + e.toString();
+    // }
 
     setState(() {
       _message = result;
@@ -144,35 +143,35 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _getHwid() async {
-    String hwid = await Pushwoosh.getInstance.getHWID;
+    // String hwid = await Pushwoosh.getInstance.getHWID;
 
-    setState(() {
-      _message = "HWID: " + hwid;
-      addLog();
-    });
+    // setState(() {
+    //   _message = "HWID: " + hwid;
+    //   addLog();
+    // });
   }
 
   void _getToken() async {
-    String? token = await Pushwoosh.getInstance.getPushToken;
+    // String? token = await Pushwoosh.getInstance.getPushToken;
 
-    setState(() {
-      if (token != null) {
-        _message = "Token: " + token;
-      } else {
-        _message = "No token";
-      }
-      addLog();
-    });
+    // setState(() {
+    //   if (token != null) {
+    //     _message = "Token: " + token;
+    //   } else {
+    //     _message = "No token";
+    //   }
+    //   addLog();
+    // });
   }
 
   void _postEvent() async {
     String result = "Event did sent";
 
-    try {
-      await Pushwoosh.getInstance.postEvent("appOpen", {"test": "test"});
-    } catch (e) {
-      result = e.toString();
-    }
+    // try {
+    //   await Pushwoosh.getInstance.postEvent("appOpen", {"test": "test"});
+    // } catch (e) {
+    //   result = e.toString();
+    // }
 
     setState(() {
       _message = result;

@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - pushpush_go (2.2.13):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - pushpush_go (from `.symlinks/plugins/pushpush_go/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  pushpush_go:
+    :path: ".symlinks/plugins/pushpush_go/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  pushpush_go: b65ebc928d352aa177ab59433dddcb4917bfb823
+
+PODFILE CHECKSUM: 61fab8eb864de8f09c75b75d135da6f2a60e9338
+
+COCOAPODS: 1.12.1

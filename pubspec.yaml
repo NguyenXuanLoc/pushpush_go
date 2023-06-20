@@ -1,4 +1,4 @@
-name: pushpushgo
+name: pushpush_go
 description: This plugin allows you to receive push notifications. Powered by Pushwoosh (www.pushwoosh.com).
 version: 2.2.2
 

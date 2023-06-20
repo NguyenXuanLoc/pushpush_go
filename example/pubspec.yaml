@@ -1,5 +1,6 @@
-name: pushwoosh_example
+name: pushpushgo_example
 description: Demonstrates how to use the pushwoosh plugin.
+version: 1.0.0+1
 
 dependencies:
   flutter:
@@ -16,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  pushwoosh:
+  pushpush_go:
     path: ../
 
 #  pushwoosh_geozones:
